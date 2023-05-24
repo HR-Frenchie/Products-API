@@ -1,0 +1,9 @@
+{
+  "name": "products-api",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=16.19.0",
+    "npm": ">=8.19.3"
+  },
+  "dependencies": {}
+}
