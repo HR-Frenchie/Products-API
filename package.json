@@ -5,5 +5,7 @@
     "node": ">=16.19.0",
     "npm": ">=8.19.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "pg": "^8.11.0"
+  }
 }
