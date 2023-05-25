@@ -1,6 +1,12 @@
-CREATE DATABASE products;
+-- Be sure to create the database.
+-- CREATE DATABASE products;
 
-USE products;
+DROP TABLE IF EXISTS related_products;
+DROP TABLE IF EXISTS features;
+DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS skus;
+DROP TABLE IF EXISTS styles;
+DROP TABLE IF EXISTS products;
 
 CREATE TABLE products (
   product_id integer PRIMARY KEY,
@@ -18,7 +24,7 @@ CREATE TABLE styles (
   product_id integer REFERENCES products NOT NULL,
   name varchar(50) NOT NULL,
   original_price numeric NOT NULL,
-  sale_price numeric,
+  sale_price numeric NULL,
   is_default boolean
 );
 
@@ -41,6 +47,12 @@ CREATE TABLE features (
   product_id integer REFERENCES products NOT NULL,
   feature varchar(50) NOT NULL,
   value varchar(100)
+);
+
+CREATE TABLE temp_related_products (
+  relationship_id integer PRIMARY KEY,
+  main_product_id integer REFERENCES products,
+  secondary_product_id integer
 );
 
 CREATE TABLE related_products (
