@@ -38,8 +38,8 @@ CREATE TABLE skus (
 CREATE TABLE photos (
   photo_id integer PRIMARY KEY,
   style_id integer REFERENCES styles NOT NULL,
-  thumbnail_url varchar(500),
-  url varchar(500) NOT NULL
+  thumbnail_url varchar(1000),
+  url varchar(1000) NOT NULL
 );
 
 CREATE TABLE features (
