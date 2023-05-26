@@ -1,0 +1,27 @@
+// Run this file, then run in the UNIX shell:
+
+//// mongoimport --db=products --collection=products --type=csv --headerline --file=/Users/alexcaron/hackreactor/sdc/Products-API/data/product.csv
+//// mongoimport --db=products --collection=features --type=csv --headerline --file=/Users/alexcaron/hackreactor/sdc/Products-API/data/features.csv
+//// mongoimport --db=products --collection=related_products --type=csv --headerline --file=/Users/alexcaron/hackreactor/sdc/Products-API/data/related.csv
+//// mongoimport --db=products --collection=photos --type=csv --headerline --file=/Users/alexcaron/hackreactor/sdc/Products-API/data/photos-clean.csv
+//// mongoimport --db=products --collection=skus --type=csv --headerline --file=/Users/alexcaron/hackreactor/sdc/Products-API/data/skus.csv
+//// mongoimport --db=products --collection=styles --type=csv --headerline --file=/Users/alexcaron/hackreactor/sdc/Products-API/data/styles.csv
+
+const { MongoClient } = require('mongodb');
+const uri = 'mongodb://localhost:27017/products';
+const client = new MongoClient(uri);
+
+client.connect()
+  .then(() => client.db())
+  .then(db => {
+    db.createCollection('products');
+    db.createCollection('features');
+    db.createCollection('related_products');
+    db.createCollection('photos');
+    db.createCollection('skus');
+    db.createCollection('styles');
+    client.close();
+  })
+  .catch(e => console.log(e));
+
+  // mongoimport --db=reviews --collection=reviews --type=csv --headerline --file=/Users/danielleebron/Documents/Hack\ Reactor/Week8/APIcsvs/reviews.csv
