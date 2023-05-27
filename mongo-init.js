@@ -20,15 +20,12 @@ const client = new MongoClient(uri);
 client.connect()
   .then(() => client.db())
   .then(db => Promise.all([
-    db.createCollection('products_temp'),
-    db.createCollection('feature_temp'),
-    db.createCollection('related_products_temp'),
-    db.createCollection('photos_temp'),
-    db.createCollection('skus_temp'),
-    db.createCollection('styles_temp'),
     db.createCollection('products'),
     db.createCollection('related_products'),
-    db.createCollection('styles')
+    db.createCollection('styles'),
+    db.createCollection('features'),
+    db.createCollection('photos'),
+    db.createCollection('skus')
     ]))
   .then(() => {
     console.log("collections were created");
