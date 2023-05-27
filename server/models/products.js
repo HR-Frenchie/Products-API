@@ -1,7 +1,7 @@
-const db = require(../db.js);
+const db = require('../db.js');
 
 const productDetails = (id) => {
-  const text = 'SELECT * FROM products WHERE id = $1 LIMIT 1';
+  const text = 'SELECT * FROM products WHERE product_id = $1 LIMIT 1';
   const values = [id];
   db.query(text, values)
     .then(results => results.rows[0])
