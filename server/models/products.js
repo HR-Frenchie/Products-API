@@ -1,6 +1,7 @@
 const db = require('../db.js');
 
 const products = (page = 1, count = 5) => {
+  console.log(page, count);
   const offset = (page - 1) * count;
   const text = `
     SELECT * FROM products LIMIT $1 OFFSET $2;
@@ -11,4 +12,4 @@ const products = (page = 1, count = 5) => {
     .catch(e => console.log("there was an error getting products: ", e));
 }
 
-module.exports = relatedProducts;
+module.exports = products;

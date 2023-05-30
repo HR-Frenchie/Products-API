@@ -1,12 +1,12 @@
 const products = require('../models/products.js');
 
 const getProducts = (req, res) => {
-  const page = req.params.page;
-  const count = req.params.count;
+  const page = req.query.page;
+  const count = req.query.count;
+  console.log(req.params);
   products(page, count)
     .then((products) => {
-      console.log(products);
-      res.send(`Hello World, here are the details: ${products}!`);
+      res.send(products);
     })
     .catch((err) => res.send(err));
 }
