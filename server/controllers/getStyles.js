@@ -4,8 +4,7 @@ const getStyles = (req, res) => {
   const productId = req.params.productId;
   styles(productId)
     .then((styles) => {
-      console.log(styles);
-      res.send(`Hello World, here are the details: ${styles}!`);
+      res.send(styles);
     })
     .catch((err) => res.send(err));
 }
