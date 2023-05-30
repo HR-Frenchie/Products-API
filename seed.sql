@@ -25,3 +25,16 @@ NULL 'null';
 INSERT INTO related_products (SELECT * FROM temp_related_products WHERE NOT secondary_product_id = 0);
 
 DROP TABLE temp_related_products;
+
+CREATE INDEX products_index ON products (product_id);
+CREATE INDEX styles_index ON styles (styles_id);
+CREATE INDEX skus_index ON skus (style_id);
+CREATE INDEX photos_index ON photos (style_id);
+CREATE INDEX features_index ON features (product_id);
+
+ALTER TABLE styles ADD COLUMN photos jsonb[];
+UPDATE styles SET photos = (SELECT
+	array_agg (jsonb_build_object('thumbnail_url', photos.thumbnail_url, 'url', photos.url))
+FROM
+    photos
+WHERE photos.style_id = styles.style_id);
