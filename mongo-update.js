@@ -4,7 +4,9 @@ const client = new MongoClient(uri);
 
 client.connect()
   .then(() => client.db())
-  .then(db => Promise.all([db.products.aggregate([{
+  .then(db => {
+    return Promise.all([
+    db.products.aggregate([{
       $lookup: {
         from: "features",
         localField: "id",
@@ -34,7 +36,7 @@ client.connect()
         as: "photos"
       }
     }])
-  ]))
+  ])})
   .then(() => {
     console.log("collections were updated");
     client.close()
