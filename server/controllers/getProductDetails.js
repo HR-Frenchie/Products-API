@@ -1,4 +1,4 @@
-const products = require('../models/products.js');
+const products = require('../models/product_details.js');
 
 const getProductDetails = (req, res) => {
   const productId = req.params.productId;
