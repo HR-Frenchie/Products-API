@@ -2,7 +2,7 @@ const db = require('../db.js');
 
 const relatedProducts = (id) => {
   const text = `
-    SELECT array_agg(secondary_product_id) related_products from related_products where main_product_id = $1;
+    SELECT array_agg(secondary_product_id) related_products FROM related_products WHERE main_product_id = $1;
   `;
   const values = [id];
   return db.query(text, values)
