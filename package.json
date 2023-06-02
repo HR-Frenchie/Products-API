@@ -6,7 +6,7 @@
     "npm": ">=8.19.3"
   },
   "scripts": {
-    "start": "node server/app.js"
+    "start": "pm2 start server/app.js"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
