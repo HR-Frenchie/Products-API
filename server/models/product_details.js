@@ -11,7 +11,6 @@ const productDetails = (id) => {
     LEFT JOIN features ON features.product_id = p.product_id
     WHERE p.product_id = $1
     GROUP BY p.product_id
-    LIMIT 1
   `;
   const values = [id];
   return db.query(text, values)
