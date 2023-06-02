@@ -3,7 +3,7 @@ const db = require('../db.js');
 const products = (page = 1, count = 5) => {
   const offset = (page - 1) * count;
   const text = `
-    SELECT * FROM products LIMIT $1 OFFSET $2;
+    SELECT * FROM products ORDER BY products.product_id LIMIT $1 OFFSET $2;
   `;
   const values = [count, offset];
   return db.query(text, values)
