@@ -4,19 +4,21 @@ const related = require('../models/related_products.js');
 const styles = require('../models/styles.js');
 
 test('retrieve product details', () => {
-  details(1)
+  return details(1)
   .then(product => {
-    expect(product.decription).toBe("The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.")
+    expect(product.description).toBe("The So Fatigues will wake you up and fit you in. This high energy camo will have you blending in to even the wildest surroundings.");
     expect(product.features.length).toBe(2);
     expect(product.category).toBe("Jackets");
   })
 });
 
-test('retrieve products', () => {
-  products()
+test('retrieve 5 products', () => {
+  return products()
   .then(productArr => expect(productArr.length).toBe(5));
+});
 
-  products(1000, 3)
+test('retrieve 3 products', () => {
+  return products(1000, 3)
   .then(productArr => {
     expect(productArr.length).toBe(3);
     expect(productArr[2]["product_id"]).toBe(3000);
@@ -24,7 +26,7 @@ test('retrieve products', () => {
 });
 
 test('retrieve related products', () => {
-  related(5555)
+  return related(5555)
   .then(related_prods => {
     expect(related_prods.length).toBe(4);
     expect(related_prods.includes(2758)).toBe(true);
@@ -35,10 +37,10 @@ test('retrieve related products', () => {
 });
 
 test('retrieve styles', () => {
-  styles(22222)
+  return styles(22222)
   .then(style => {
     expect(style.product_id).toBe(22222);
     expect(style.results.length).toBe(1);
-    expect(style.results[0].name).toBe(Azure);
+    expect(style.results[0].name).toBe('Azure');
   });
 });
