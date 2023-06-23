@@ -8,7 +8,7 @@
   "scripts": {
     "start": "pm2 start server/app.js",
     "stop": "pm2 stop app",
-    "test": "jest"
+    "test": "jest --coverage --forceExit"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
